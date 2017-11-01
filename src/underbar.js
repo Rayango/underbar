@@ -101,12 +101,12 @@
 
   _.reduce = function(collection, iterator, accumulator) {
     var i = 0;
-    if (!accumulator) {
+    if (accumulator == null) {
       accumulator = collection[i];
       i++;
     }
     for (i; i < collection.length; i++) {
-      accumulator += iterator(accumulator, collection[i]);
+      accumulator = iterator(accumulator, collection[i]);
     }
     return accumulator;
   };
