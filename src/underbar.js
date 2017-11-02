@@ -208,18 +208,16 @@
     setTimeout(func, wait, ...args);
   };
 
-
-  /**
-   * ADVANCED COLLECTION OPERATIONS
-   * ==============================
-   */
-
-  // Randomizes the order of an array's contents.
-  //
-  // TIP: This function's test suite will ask that you not modify the original
-  // input array. For a tip on how to make a copy of an array, see:
-  // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var arrayCopy = array.slice();
+    var randomElement;
+    var shuffledArray = [];
+    while (arrayCopy.length > 0) {
+      randomElement = Math.floor((Math.random() * arrayCopy.length));
+      shuffledArray.push(arrayCopy[randomElement]);
+      arrayCopy.splice(randomElement, 1);
+    }
+    return shuffledArray;
   };
 
 
