@@ -71,13 +71,13 @@
     }
     if (iterator) {
       for (var i = 0; i < array2.length; i++) {
-        if (iterator(array2[i]) !== iterator(array2[i + 1])) {
+        if (iterator(array2[i]) !== iterator(uniqueArray[uniqueArray.length - 1])) {
           uniqueArray.push(array2[i]);
         } 
       }
     } else {
       for (var i = 0; i < array2.length; i++) {
-        if (array2[i] !== array2[i + 1]) {
+        if (array2[i] !== uniqueArray[uniqueArray.length - 1]) {
           uniqueArray.push(array2[i]);
         } 
       }
@@ -215,6 +215,7 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+
   };
 
   // Delays a function for the given number of milliseconds, and then calls
