@@ -101,12 +101,22 @@
 
   _.reduce = function(collection, iterator, accumulator) {
     var i = 0;
-    if (accumulator == null) {
-      accumulator = collection[i];
-      i++;
-    }
-    for (i; i < collection.length; i++) {
-      accumulator = iterator(accumulator, collection[i]);
+    if (Array.isArray(collection)) {
+      if (accumulator == null) {
+        accumulator = collection[i];
+        i++;
+      }
+      for (i; i < collection.length; i++) {
+        accumulator = iterator(accumulator, collection[i]);
+      }
+    } else {
+      if (accumulator == null) {
+        accumuator = Object.keys(collection)[0];
+        i++;
+      }
+      for (i; i < Object.keys(collection).length; i++) {
+        accumulator = iterator(accumulator, collection[Object.keys(collection)[i]]);
+      }
     }
     return accumulator;
   };
